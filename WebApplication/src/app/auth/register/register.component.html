@@ -1,0 +1,65 @@
+<div class="hold-transition login-page">
+  <div class="login-box animate__animated animate__backInLeft">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>Taller</b>TEC</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Rellene los campos con la informacion solicitada</p>
+
+        <form>
+
+          <div class="input-group mb-3">
+            <input type="email" [(ngModel)]="id" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Cedula">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="email" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Nombre Completo">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="email" [(ngModel)]="user" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Usuario">
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="email" [(ngModel)]="email" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Email">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <input type="password" [(ngModel)]="password" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- /.col -->
+            <div class="col-6 text-right">
+              <button type="primary" (click)="Back()" class="btn btn-outline-secondary btn-block" >Volver</button>
+            </div>
+
+            <div class="col-6 text-right">
+              <button type="submit" (click)="Register()" class="btn btn-outline-secondary btn-block" >Registrar Usuario</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <div class="social-auth-links text-center mb-3 " id="my-signin2">
+
+        </div>
+        <!-- /.social-auth-links -->
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+</div>

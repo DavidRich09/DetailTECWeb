@@ -1,0 +1,56 @@
+<div class="hold-transition login-page">
+  <div class="login-box animate__animated animate__backInLeft">
+    <div class="login-logo">
+      <a href="../../index2.html"><b>Detail</b>TEC</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Inicie Sesion o Registrese</p>
+
+        <form>
+          <div class="input-group mb-3">
+            <input type="email" [(ngModel)]="id" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Cedula">
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" [(ngModel)]="password" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Contraseña">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock" style="color: rgb(48, 37, 37);"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-8">
+              <div class="form-group mb-3">
+                <select [(ngModel)]="role" [ngModelOptions] = "{standalone: true}" class="form-control" id="RolSelection">
+                  <option>Trabajador</option>
+                  <option>Cliente</option>
+                </select>
+              </div>
+            </div>
+            <!-- /.col -->
+            <div class="col-4">
+              <button type="primary" (click)="onLogin()" class="btn btn-outline-secondary btn-block" >Acceder</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+        <div class="social-auth-links text-center mb-3 " id="my-signin2">
+
+        </div>
+        <!-- /.social-auth-links -->
+
+<!--        <p class="mb-1">-->
+<!--          <a href="forgot-password.html" class="link-pass"> forgot my password</a>-->
+<!--        </p>-->
+        <p class="mb-0">
+          <a routerLink="/register" class="text-center link-reg cursor">Registrarse</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+</div>
