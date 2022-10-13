@@ -1,0 +1,53 @@
+<div class = "content" >
+
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class = "text-md-center">
+        <h1></h1>
+      </div>
+
+    </div>
+  </div>
+
+  <div class = "container-fluid" style="width: 50% ; justify-content: space-between; top: 50%; position: inherit ">
+
+    <div class="card card-primary" >
+      <div class="card-header">
+        <h3 class="card-title">Gestión de proveedores</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body" >
+        <form role="form">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar nombre...">
+          </div>
+          <div class="form-group">
+            <label>Cédula Jurídica</label>
+            <input type="text"[(ngModel)]="idCompany" [ngModelOptions] = "{standalone: true}"  class="form-control" placeholder="Ingresar cédula jurídica...">
+          </div>
+          <div class="form-group">
+            <label>Dirección</label>
+            <input type="text" [(ngModel)]="address" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar dirección...">
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="text" [(ngModel)]="mail" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar correo electrónico...">
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="text" [(ngModel)]="number" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar teléfono...">
+          </div>
+
+
+        </form>
+      </div>
+      <div class="card-footer" style="justify-content: center">
+        <button type="submit" (click)="send()" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

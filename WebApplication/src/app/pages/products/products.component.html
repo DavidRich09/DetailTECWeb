@@ -1,0 +1,55 @@
+<div class = "content" >
+
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class = "text-md-center">
+        <h1></h1>
+      </div>
+
+    </div>
+  </div>
+
+  <div class = "container-fluid" style="width: 50% ; justify-content: space-between; top: 50%; position: inherit ">
+
+    <div class="card card-primary" >
+      <div class="card-header">
+        <h3 class="card-title">Gestión de insumos/productos</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body" >
+        <form role="form">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar nombre...">
+          </div>
+          <div class="form-group">
+            <label>Marca</label>
+            <input type="text" [(ngModel)]="brand" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar marca...">
+          </div>
+          <div class="form-group">
+            <label>Costo</label>
+            <input type="text" [(ngModel)]="price" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar Costo...">
+          </div>
+
+          <div class="form-group">
+            <label> Proveedor</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button type="button" (click)="saveSupplier()" class="btn-primary ">Agregar</button>
+              </div>
+              <!-- /btn-group -->
+              <input type="text" [(ngModel)]="supplier" [ngModelOptions] = "{standalone: true}" class="form-control">
+            </div>
+            {{listSupplier}}
+          </div>
+        </form>
+      </div>
+      <div class="card-footer" style="justify-content: center">
+        <button type="submit" (click)="send()"class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
