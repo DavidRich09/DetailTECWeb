@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminapiService} from "../adminapi.service";
 
 @Component({
   selector: 'app-appointment',
@@ -16,7 +17,7 @@ export class AppointmentComponent implements OnInit {
   placa: any;
   date: any;
 
-  constructor() {
+  constructor(private ApiAdmin: AdminapiService) {
 
     this.listOffice = ["Primer sede", "Segunda sede", "Tercera sede", "Cuarta sede", "Quinta sede", "Sexta sede", "Septima sede", "Octava sede", "Novena sede", "Decima sede"];
     this.listService = ["Hola"]

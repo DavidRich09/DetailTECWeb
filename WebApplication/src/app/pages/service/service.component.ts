@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminapiService} from "../adminapi.service";
 
 @Component({
   selector: 'app-service',
@@ -14,9 +15,11 @@ export class ServiceComponent implements OnInit {
   price: any;
   time: any;
   product: any;
+  requiredStaff: any;
+  points: any;
 
 
-  constructor() {
+  constructor(private ApiAdmin: AdminapiService) {
 
     this.listProducts = ["Primer producto", "Segundo producto", "Tercer producto", "Cuarto producto", "Quinto producto", "Sexto producto", "Septimo producto", "Octavo producto", "Noveno producto", "Decimo producto"];
 
@@ -52,10 +55,10 @@ export class ServiceComponent implements OnInit {
 
   send() {
 
-    if(this.name == undefined || this.name == "" || this.cost == undefined || this.cost == "" || this.price == undefined || this.price == "" || this.time == undefined || this.time == "") {
+    if(this.name == undefined || this.name == "" || this.cost == undefined || this.cost == "" || this.price == undefined || this.price == "" || this.time == undefined || this.time == "" || this.requiredStaff == undefined || this.requiredStaff == "" || this.points == undefined || this.points == "") {
       alert("Todos los campos son obligatorios");
-    } else if (isNaN(this.cost) || isNaN(this.price)){
-      alert("El costo, precio y tiempo deben ser numeros");
+    } else if (isNaN(this.cost) || isNaN(this.price || isNaN(this.points))){
+      alert("El costo, precio y los puntos deben ser numeros");
     } else if (this.listStringProducts == "") {
       alert("Debe agregar al menos un producto");
     } else {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminapiService} from "../adminapi.service";
 
 @Component({
   selector: 'app-workers',
@@ -17,7 +18,7 @@ export class WorkersComponent implements OnInit {
   rol: any;
   payment: any;
 
-  constructor() { }
+  constructor(private ApiAdmin: AdminapiService) { }
 
   ngOnInit(): void {
   }

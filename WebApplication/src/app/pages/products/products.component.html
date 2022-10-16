@@ -38,9 +38,10 @@
                 <button type="button" (click)="saveSupplier()" class="btn-primary ">Agregar</button>
               </div>
               <!-- /btn-group -->
-              <input type="text" [(ngModel)]="supplier" [ngModelOptions] = "{standalone: true}" class="form-control">
+              <select class="form-control" [(ngModel)]="supplier" [ngModelOptions] = "{standalone: true}" id="supplierSelect">
+              </select>
             </div>
-            {{listSupplier}}
+            {{listSupplierString}}
           </div>
         </form>
       </div>

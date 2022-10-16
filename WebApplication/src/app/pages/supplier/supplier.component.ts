@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminapiService} from "../adminapi.service";
 
 @Component({
   selector: 'app-supplier',
@@ -13,7 +14,7 @@ export class SupplierComponent implements OnInit {
   mail: any;
   number: any;
 
-  constructor() { }
+  constructor(private ApiAdmin: AdminapiService) { }
 
   ngOnInit(): void {
   }
@@ -21,8 +22,8 @@ export class SupplierComponent implements OnInit {
   send() {
     if(this.name == undefined || this.name == "" || this.idCompany == undefined || this.idCompany == "" || this.address == undefined || this.address == "" || this.mail == undefined || this.mail == "" || this.number == undefined || this.number == "") {
       alert("Todos los campos son obligatorios");
-    } else if (!isNaN(this.number)){
-      alert("El numero de celular debe ser un numero");
+    } else if (isNaN(this.number)){
+      alert("La cédula jurídica debe ser un numero");
     } else if (this.number.length != 8) {
       alert("El numero de celular debe tener 8 dígitos");
     } else if (this.mail.indexOf("@") == -1 || this.mail.indexOf(".") == -1){

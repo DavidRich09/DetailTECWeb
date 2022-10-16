@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminapiService} from "../adminapi.service";
 
 @Component({
   selector: 'app-client',
@@ -17,7 +18,7 @@ export class ClientComponent implements OnInit {
   ListStringNumers = "";
   ListStringAddress = "";
 
-  constructor() { }
+  constructor(private ApiAdmin: AdminapiService) { }
 
   ngOnInit(): void {
 
