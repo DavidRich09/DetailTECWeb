@@ -1,0 +1,72 @@
+<div class = "content" >
+
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class = "text-md-center">
+        <h1></h1>
+      </div>
+
+    </div>
+  </div>
+
+  <div class = "container-fluid" style="width: 50% ; justify-content: space-between; top: 50%; position: inherit ">
+
+    <div class="card card-primary" >
+      <div class="card-header">
+        <h3 class="card-title">Gestión de clientes</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body" >
+        <form role="form">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar nombre...">
+          </div>
+          <div class="form-group">
+            <label>Telefonos</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button type="button"  (click)="AddNumber()" class="btn-primary ">Agregar</button>
+              </div>
+              <!-- /btn-group -->
+              <input type="text" [(ngModel)]="cellPhone" [ngModelOptions] = "{standalone: true}"  class="form-control">
+            </div>
+            <div [innerHTML]="ListStringNumers"></div>
+          </div>
+          <div class="form-group">
+            <label>Cédula</label>
+            <input type="text" [(ngModel)]="idNumber" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar cédula...">
+          </div>
+          <div class="form-group">
+            <label>Correo</label>
+            <input type="text" [(ngModel)]="mail" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar correo...">
+          </div>
+          <div class="form-group">
+            <label>Usuario</label>
+            <input type="text" [(ngModel)]="user" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar usuario...">
+          </div>
+          <div class="form-group">
+            <label>Direcciones</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button type="button" (click)="AddAddress()" class="btn-primary ">Agregar</button>
+              </div>
+
+              <input type="text"  [(ngModel)]="address" [ngModelOptions] = "{standalone: true}"  class="form-control" placeholder="Ingresar dirección...">
+
+
+            </div>
+            <div [innerHTML]="ListStringAddress"></div>
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer" style="justify-content: center">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,68 @@
+<div class = "content" >
+
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class = "text-md-center">
+        <h1></h1>
+      </div>
+
+    </div>
+  </div>
+
+  <div class = "container-fluid" style="width: 50% ; justify-content: space-between; top: 50%; position: inherit ">
+
+    <div class="card card-primary" >
+      <div class="card-header">
+        <h3 class="card-title">Gestión de servicios</h3>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body" >
+        <form role="form">
+          <div class="form-group">
+            <label>Nombre del tipo de lavado</label>
+            <input type="text" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar nombre...">
+          </div>
+          <div class="form-group">
+            <label>Costo</label>
+            <input type="text" [(ngModel)]="cost" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar costo al personal...">
+          </div>
+          <div class="form-group">
+            <label>Precio</label>
+            <input type="text" [(ngModel)]="price" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar precio...">
+          </div>
+          <div class="form-group">
+            <label>Duración</label>
+            <input type="text" [(ngModel)]="time" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar duración...">
+          </div>
+          <div class="form-group">
+            <label> Productos</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <button type="button" (click)="saveProduct()" class="btn-primary ">Agregar</button>
+              </div>
+              <!-- /btn-group -->
+              <select class="form-control" [(ngModel)]="product" [ngModelOptions] = "{standalone: true}" id="serviceSelect">
+              </select>
+            </div>
+            {{listStringProducts}}
+          </div>
+          <div class="form-group">
+            <label>Personal requerido</label>
+            <input type="text" [(ngModel)]="requiredStaff" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar personal...">
+          </div>
+          <div class="form-group">
+            <label>Puntuación</label>
+            <input type="text" [(ngModel)]="points" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar puntuación del programa de lealtad...">
+          </div>
+
+        </form>
+      </div>
+      <div class="card-footer" style="justify-content: center">
+        <button type="submit"  (click)="send()" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
