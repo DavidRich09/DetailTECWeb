@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AdminapiService} from "../adminapi.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-service',
@@ -8,7 +9,7 @@ import {AdminapiService} from "../adminapi.service";
 })
 export class ServiceComponent implements OnInit {
 
-  listProducts: any[];
+  listProducts: any;
   listStringProducts: string = "";
   name: any;
   cost: any;
@@ -21,22 +22,44 @@ export class ServiceComponent implements OnInit {
 
   constructor(private ApiAdmin: AdminapiService) {
 
-    this.listProducts = ["Primer producto", "Segundo producto", "Tercer producto", "Cuarto producto", "Quinto producto", "Sexto producto", "Septimo producto", "Octavo producto", "Noveno producto", "Decimo producto"];
-
   }
+
 
   ngOnInit(): void {
 
-    //Añadir los elementos de listProducts al select
+    this.addProduct();
 
-    this.product = document.getElementById("serviceSelect");
+  }
 
-    //Añadir los elementos de listProducts al select
-    for (let i = 0; i < this.listProducts.length; i++) {
-      let option = document.createElement("option");
-      option.text = this.listProducts[i];
-      this.product.add(option);
-    }
+  addProduct() {
+
+    (async () => {
+
+      this.ApiAdmin.GetProductsNames().subscribe((data) => {
+
+        let json = JSON.parse(JSON.stringify(data));
+        this.listProducts = json["data"];
+
+        for (let i = 0; i < this.listProducts.length; i++) {
+          this.listProducts[i] = this.listProducts[i]["nombre"] + "-" + this.listProducts[i]["marca"];
+        }
+
+      });
+
+      await new Promise(r => setTimeout(r, 1000));
+
+      //Añadir los elementos de listProducts al select
+
+      this.product = document.getElementById("serviceSelect");
+
+      //Añadir los elementos de listProducts al select
+      for (let i = 0; i < this.listProducts.length; i++) {
+        let option = document.createElement("option");
+        option.text = this.listProducts[i];
+        this.product.add(option);
+      }
+
+    })();
 
   }
 
@@ -48,7 +71,6 @@ export class ServiceComponent implements OnInit {
       this.listStringProducts += this.product + ", ";
       this.product = "";
 
-      console.log(this.listStringProducts);
     }
 
   }
@@ -56,15 +78,89 @@ export class ServiceComponent implements OnInit {
   send() {
 
     if(this.name == undefined || this.name == "" || this.cost == undefined || this.cost == "" || this.price == undefined || this.price == "" || this.time == undefined || this.time == "" || this.requiredStaff == undefined || this.requiredStaff == "" || this.points == undefined || this.points == "") {
-      alert("Todos los campos son obligatorios");
+      this.showWarning("Todos los campos son obligatorios");
     } else if (isNaN(this.cost) || isNaN(this.price || isNaN(this.points))){
-      alert("El costo, precio y los puntos deben ser numeros");
+      this.showWarning("El costo, precio y los puntos deben ser numeros");
     } else if (this.listStringProducts == "") {
-      alert("Debe agregar al menos un producto");
+      this.showWarning("Debe agregar al menos un producto");
     } else {
-      //enviar datos al backend
+      this.sendData();
     }
+
+  }
+
+  sendData(){
+
+    (async () => {
+
+      this.sendService();
+      await new Promise(r => setTimeout(r, 5000));
+      this.sendProducts();
+
+    })();
+
+  }
+
+  sendService() {
+
+    this.ApiAdmin.PostService({
+
+      tipoLavado: this.name,
+      duracion: this.time,
+      costo: this.cost,
+      precio: this.price,
+      puntosOtorga: this.points,
+      puntosRedimir: this.points,
+
+    }).subscribe((data) => {
+      console.log(data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Guardado',
+        text: '¨Lavado guardado con éxito',
+      })
+    });
 
 
   }
+
+  sendProducts() {
+
+    let listProducts = this.listStringProducts.split(", ");
+    listProducts.pop();
+    //create json list
+    let listJsonProducts = [];
+
+    //for each product
+    for (let i = 0; i < listProducts.length; i++) {
+
+        let product = listProducts[i].split("-");
+
+        let jsonProduct = {
+          nombre: product[0],
+          marca: product[1],
+          tipoLavado : this.name,
+          cantidad: 1
+        };
+
+        listJsonProducts.push(jsonProduct);
+
+    }
+
+    this.ApiAdmin.PostProductSale(listJsonProducts).subscribe((data) => {
+      console.log(data);
+    });
+
+  }
+
+
+  showWarning(message: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Los campos no son válidos',
+      text: message,
+    })
+  }
+
+
 }

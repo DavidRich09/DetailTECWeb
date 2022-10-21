@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import {AdminapiService} from "../adminapi.service";
 
 @Component({
@@ -8,8 +9,8 @@ import {AdminapiService} from "../adminapi.service";
 })
 export class AppointmentComponent implements OnInit {
 
-  listOffice: any[];
-  listService: any[];
+  listOffice: any;
+  listService: any;
 
   officeSelect: any;
   serviceSelect: any;
@@ -19,50 +20,135 @@ export class AppointmentComponent implements OnInit {
 
   constructor(private ApiAdmin: AdminapiService) {
 
-    this.listOffice = ["Primer sede", "Segunda sede", "Tercera sede", "Cuarta sede", "Quinta sede", "Sexta sede", "Septima sede", "Octava sede", "Novena sede", "Decima sede"];
-    this.listService = ["Hola"]
 
   }
 
   ngOnInit(): void {
 
-    //Añadir los elementos de listOffice al select
-
-    this.officeSelect = document.getElementById("officeSelect");
-    this.serviceSelect = document.getElementById("serviceSelect");
-
-    //Añadir los elementos de listOffice al select
-    for (let i = 0; i < this.listOffice.length; i++) {
-      let option = document.createElement("option");
-      option.text = this.listOffice[i];
-      this.officeSelect.add(option);
-    }
-
-    //Añadir los elementos de listService al select
-    for (let i = 0; i < this.listService.length; i++) {
-      let option = document.createElement("option");
-      option.text = this.listService[i];
-      this.serviceSelect.add(option);
-    }
+    this.addListOffice();
+    this.addListService();
 
   }
+
+  /**
+   * Funcion que pide los datos de las oficinas al API y las guarda en la variable listOffice para luego mostrarlas en el select
+   */
+
+  addListOffice() {
+
+    (async () => {
+
+      this.ApiAdmin.GetNamesOffice().subscribe((data) => {
+
+        let json = JSON.parse(JSON.stringify(data));
+        this.listOffice = json["data"];
+      });
+
+      await new Promise(r => setTimeout(r, 1000));
+
+      this.officeSelect = document.getElementById("officeSelect");
+
+      //Añadir los elementos de listOffice al select
+      for (let i = 0; i < this.listOffice.length; i++) {
+        let option = document.createElement("option");
+        option.text = this.listOffice[i];
+        this.officeSelect.add(option);
+      }
+
+    })();
+
+
+  }
+
+  /**
+   * Funcion que pide los datos de los servicios al API y las guarda en la variable listOffice para luego mostrarlas en el select
+   */
+
+  addListService() {
+
+    (async () => {
+
+      this.ApiAdmin.GetNamesService().subscribe((data) => {
+
+          let json = JSON.parse(JSON.stringify(data));
+          this.listService = json["data"];
+      });
+
+      await new Promise(r => setTimeout(r, 1000));
+
+      this.serviceSelect = document.getElementById("serviceSelect");
+
+      for (let i = 0; i < this.listService.length; i++) {
+        let option = document.createElement("option");
+        option.text = this.listService[i];
+        this.serviceSelect.add(option);
+      }
+
+    })();
+
+  }
+
+  /**
+   * Funcion que verifica si los datos ingresados son validos
+   */
 
   onSave() {
 
     if(this.idNumber == undefined || this.idNumber == "") {
-      alert("El campo numero de identificacion es obligatorio");
+      this.showWarning("El campo numero de identificacion es obligatorio");
     } else if(isNaN(this.idNumber)) {
-      alert("El campo numero de identificacion debe ser numerico");
+      this.showWarning("El campo numero de identificacion debe ser numerico");
     } else if(this.placa == undefined || this.placa == "") {
-      alert("El campo placa es obligatorio");
+      this.showWarning("El campo placa es obligatorio");
     } else if(this.date == undefined || this.date == "") {
-      alert("El campo fecha es obligatorio");
+      this.showWarning("El campo fecha es obligatorio");
     } else if (this.idNumber.length != 9) {
-      alert("El numero de identificacion debe tener 9 digitos");
+      this.showWarning("El numero de identificacion debe tener 9 digitos");
     } else {
-      alert("Datos guardados correctamente");
+      this.SendData();
     }
 
+  }
+
+  /**
+   * Funcion que muestra un mensaje de alerta
+   * @param message Mensaje que se mostrara en la alerta
+   */
+
+  showWarning(message: string) {
+    Swal.fire({
+      icon: 'warning',
+      title: 'Los campos no son válidos',
+      text: message,
+    })
+  }
+
+  SendData() {
+
+    this.ApiAdmin.PostAppointment(
+
+      {
+        placaVehiculo: this.placa,
+        fecha: this.date,
+        tipoLavado: this.serviceSelect,
+        sucursal: this.officeSelect,
+        cedEmpleado: 0,
+        cedCliente: this.idNumber,
+      }
+
+    ).subscribe((data) => {
+
+      console.log(data);
+      Swal.fire({
+        icon: 'success',
+        title: 'Guardado',
+        text: '¨Cita guardado con éxito',
+
+      })
+    });
 
   }
+
+
+
 }
