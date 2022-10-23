@@ -1,63 +1,75 @@
 <div class="hold-transition login-page">
   <div class="login-box animate__animated animate__backInLeft">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Taller</b>TEC</a>
+      <a href="../../index2.html"><b>Detail</b>TEC</a>
     </div>
     <!-- /.login-logo -->
-    <div class="card">
-      <div class="card-body login-card-body">
-        <p class="login-box-msg">Rellene los campos con la informacion solicitada</p>
-
-        <form>
-
+    <div class="card-body" >
+      <form role="form">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar nombre...">
+        </div>
+        <div class="form-group">
+          <label>Telefonos</label>
           <div class="input-group mb-3">
-            <input type="email" [(ngModel)]="id" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Cedula">
+            <div class="input-group-prepend">
+              <button type="button"  (click)="AddNumber()" class="btn-primary ">Agregar</button>
+            </div>
+            <!-- /btn-group -->
+            <input type="text" [(ngModel)]="cellPhone" [ngModelOptions] = "{standalone: true}"  class="form-control">
           </div>
-
-          <div class="input-group mb-3">
-            <input type="email" [(ngModel)]="name" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Nombre Completo">
-          </div>
-
-          <div class="input-group mb-3">
-            <input type="email" [(ngModel)]="user" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Usuario">
-          </div>
-
-          <div class="input-group mb-3">
-            <input type="email" [(ngModel)]="email" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Email">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-envelope" style="color: rgb(48, 37, 37);"></span>
-              </div>
+          <div [innerHTML]="ListStringNumers"></div>
+        </div>
+        <div class="form-group">
+          <label>Cédula</label>
+          <input type="text" [(ngModel)]="idNumber" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar cédula...">
+        </div>
+        <div class="form-group">
+          <label>Correo</label>
+          <input type="text" [(ngModel)]="mail" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar correo...">
+        </div>
+        <div class="form-group">
+          <label>Usuario</label>
+          <input type="text" [(ngModel)]="user" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Ingresar usuario...">
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" [(ngModel)]="cpassword" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Contraseña">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock" style="color: rgb(48, 37, 37);"></span>
             </div>
           </div>
-
+        </div>
+        <div class="form-group">
+          <label>Direcciones</label>
           <div class="input-group mb-3">
-            <input type="password" [(ngModel)]="password" [ngModelOptions] = "{standalone: true}" class="form-control" placeholder="Password">
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-lock" style="color: rgb(48, 37, 37);"></span>
-              </div>
+            <div class="input-group-prepend">
+              <button type="button" (click)="AddAddress()" class="btn-primary ">Agregar</button>
             </div>
+            <input type="text"  [(ngModel)]="address" [ngModelOptions] = "{standalone: true}"  class="form-control" placeholder="Ingresar dirección...">
           </div>
+          <div [innerHTML]="ListStringAddress"></div>
 
           <div class="row">
             <!-- /.col -->
             <div class="col-6 text-right">
               <button type="primary" (click)="Back()" class="btn btn-outline-secondary btn-block" >Volver</button>
             </div>
-
             <div class="col-6 text-right">
               <button type="submit" (click)="Register()" class="btn btn-outline-secondary btn-block" >Registrar Usuario</button>
             </div>
-            <!-- /.col -->
+            <!-- /.row -->
           </div>
-        </form>
 
         <div class="social-auth-links text-center mb-3 " id="my-signin2">
 
         </div>
         <!-- /.social-auth-links -->
-      </div>
+        </div> </form>
       <!-- /.login-card-body -->
     </div>
   </div>
