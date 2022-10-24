@@ -5,6 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './client-points.component.html',
   styleUrls: []
 })
+
+/**
+ * Componente que permite observar los puntos del cliente, con las variables points y user que se obtienen del localStorage
+ * asignado desde el login del cliente.
+ */
+
 export class ClientPointsComponent implements OnInit {
 
   points = localStorage.getItem("points");

@@ -7,6 +7,11 @@ import {AdminapiService} from "../../pages/adminapi.service";
   templateUrl: './appointment.component.html',
   styleUrls: []
 })
+
+/**
+ * Componente que permite crear una cita para el cliente, con las variable user que se obtiene del localStorage
+ * asignado desde el login del cliente.
+ */
 export class AppointmentComponent implements OnInit {
 
   listOffice: any;
@@ -21,7 +26,15 @@ export class AppointmentComponent implements OnInit {
   constructor(private ApiAdmin : AdminapiService) { }
 
   ngOnInit(): void {
+
+    this.addListOffice();
+    this.addListService();
+
   }
+
+  /**
+   * Funcion que pide los datos de las sucursales al API y las guarda en la variable listOffice para luego mostrarlas en el select
+   */
 
   addListOffice() {
 
@@ -50,7 +63,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   /**
-   * Funcion que pide los datos de los servicios al API y las guarda en la variable listOffice para luego mostrarlas en el select
+   * Funcion que pide los datos de los servicios al API y las guarda en la variable listService para luego mostrarlas en el select
    */
 
   addListService() {
@@ -109,6 +122,11 @@ export class AppointmentComponent implements OnInit {
       text: message,
     })
   }
+
+  /**
+   * Funcion que envia la informacion de la Cita al API.
+   * @constructor
+   */
 
   SendData() {
 

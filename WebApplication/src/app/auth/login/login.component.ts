@@ -7,6 +7,11 @@ import {AuthApiService} from "../auth-api.service";
   templateUrl: './login.component.html',
   styleUrls: [],
 })
+
+/**
+ * Login component, utilizado para el ingreso de usuarios y trabajadores. Componente inicial al iniciar la pagina.
+ */
+
 export class LoginComponent implements OnInit {
 
   role: any;
@@ -19,6 +24,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Funcion que se ejecuta al presionar el boton de ingresar, se encarga de verificar que el usuario y la contraseña sean correctos,
+   * además de redireccionar al usuario a la pagina correspondiente segun el rol seleccionado.
+   */
   onLogin(){
     if (this.user == null || this.password == null || this.user == null){
 

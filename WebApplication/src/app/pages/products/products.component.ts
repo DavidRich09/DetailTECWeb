@@ -125,8 +125,7 @@ export class ProductsComponent implements OnInit {
       {
         nombre: this.name,
         marca: this.brand,
-        costo: this.price,
-        tipoLavado: "string"
+        costo: this.price
       }
 
     ).subscribe((data) => {
