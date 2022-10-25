@@ -11,6 +11,7 @@ import { ProductsComponent } from './products/products.component';
 import { ServiceComponent } from './service/service.component';
 import { ClientComponent } from './client/client.component';
 import { AppointmentComponent } from './appointment/appointment.component';
+import { ReportComponent } from './Reports/report.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppointmentComponent } from './appointment/appointment.component';
     ProductsComponent,
     ServiceComponent,
     ClientComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    ReportComponent
   ],
   exports: [
 

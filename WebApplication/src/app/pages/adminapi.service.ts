@@ -145,5 +145,11 @@ export class AdminapiService {
 
   }
 
+  public Asistente(){
+    let urlTrue = this.url + "Report/Asistente";
+
+    return this.http.get(urlTrue);
+  }
+
 
 }

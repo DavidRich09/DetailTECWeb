@@ -13,6 +13,7 @@ import {ProductsComponent} from "./products/products.component";
 import {ServiceComponent} from "./service/service.component";
 import {ClientComponent} from "./client/client.component";
 import {AppointmentComponent} from "./appointment/appointment.component";
+import {ReportComponent} from "./Reports/report.component";
 
 const routes: Routes = [
   {path : 'AdminView', component : PagesComponent, children : [
@@ -23,6 +24,7 @@ const routes: Routes = [
       {path : 'Service', component : ServiceComponent},
       {path : 'Client', component : ClientComponent},
       {path : 'Appointment', component : AppointmentComponent},
+      {path : 'Report', component : ReportComponent},
     ]
   }
 ];
