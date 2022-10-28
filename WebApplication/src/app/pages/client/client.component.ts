@@ -76,9 +76,11 @@ export class ClientComponent implements OnInit {
 
     (async () => {
 
-        await this.SendClient();
-        await this.SendClientNumber();
-        await this.SendDirClient();
+        this.SendClient();
+        await new Promise(r => setTimeout(r, 2000));
+        this.SendClientNumber();
+        await new Promise(r => setTimeout(r, 2000));
+        this.SendDirClient();
 
     })();
 

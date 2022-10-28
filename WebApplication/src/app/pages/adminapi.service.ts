@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AdminapiService {
 
-  url:string = "https://localhost:44376/";
+  url:string = "http://localhost:44376/";
 
   constructor(private http: HttpClient) { }
 
@@ -103,7 +103,7 @@ export class AdminapiService {
 
   public PostClient(body:any){
 
-    let urlTrue = this.url + "Cliente/saveClient";
+    let urlTrue = this.url + "Cliente/saveClientAdmin";
 
     return this.http.post(urlTrue, body);
 
