@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminapiService} from "../adminapi.service";
 import Swal from "sweetalert2";
 
+
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -187,7 +188,9 @@ export class ClientComponent implements OnInit {
    * @constructor
    */
   CallExcelImport() {
-    this.ApiAdmin.CallExcel();
+    this.ApiAdmin.CallExcel().subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }
