@@ -182,4 +182,12 @@ export class ClientComponent implements OnInit {
 
   }
 
+  /**
+   * Llama al metodo para agregar los clientes del Excel a la base de datos
+   * @constructor
+   */
+  CallExcelImport() {
+    this.ApiAdmin.CallExcel();
+  }
+
 }

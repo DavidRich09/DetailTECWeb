@@ -151,5 +151,11 @@ export class AdminapiService {
     return this.http.get(urlTrue);
   }
 
+  public CallExcel(){
+    let urlTrue = this.url + "Excel/importClients";
+
+    return this.http.get(urlTrue);
+  }
+
 
 }
