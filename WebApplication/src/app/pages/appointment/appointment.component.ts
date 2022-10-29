@@ -123,6 +123,10 @@ export class AppointmentComponent implements OnInit {
     })
   }
 
+  /**
+   * Envia los datos al API
+   */
+
   SendData() {
 
     this.ApiAdmin.PostAppointment(

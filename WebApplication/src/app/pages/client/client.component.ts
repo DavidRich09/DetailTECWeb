@@ -25,6 +25,10 @@ export class ClientComponent implements OnInit {
 
   }
 
+  /**
+   * Añade un numero al string de numeros
+   */
+
 
   AddNumber() {
 
@@ -41,6 +45,10 @@ export class ClientComponent implements OnInit {
 
   }
 
+  /**
+   * Añade un numero al string de direcciones
+   */
+
   AddAddress() {
 
     if(this.address == undefined || this.address == "") {
@@ -51,6 +59,10 @@ export class ClientComponent implements OnInit {
     }
 
   }
+
+  /**
+   * Verifia que los datos esten bien
+   */
 
   Send() {
 
@@ -72,6 +84,10 @@ export class ClientComponent implements OnInit {
 
   }
 
+  /**
+   * Envia los datos al servidor
+   */
+
   SendData(){
 
     (async () => {
@@ -85,6 +101,10 @@ export class ClientComponent implements OnInit {
     })();
 
   }
+
+  /**
+   * Envia los datos del cliente al servidor
+   */
 
   SendClient() {
 
@@ -114,6 +134,10 @@ export class ClientComponent implements OnInit {
 
   }
 
+  /**
+   * Envia los numeros del cliente al servidor
+   */
+
   SendClientNumber(){
     let ListNumbers = this.ListStringNumers.split(" ");
     ListNumbers.pop();
@@ -132,6 +156,10 @@ export class ClientComponent implements OnInit {
     });
 
   }
+
+  /**
+   * Envia las direcciones del cliente al servidor
+   */
 
   SendDirClient(){
 

@@ -26,6 +26,10 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  /**
+   * Añade un proveedor a la lista de proveedores
+   */
+
   saveSupplier() {
 
     if(this.supplier == undefined || this.supplier == "") {
@@ -37,6 +41,10 @@ export class ProductsComponent implements OnInit {
 
   }
 
+
+  /**
+   * Carga los proveedores en el select traidos desde la base de datos
+   */
 
   addSupplier() {
 
@@ -69,6 +77,10 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  /**
+   * Valida que los datos estan bien
+   */
+
   send() {
 
       if(this.name == undefined || this.name == "" || this.brand == undefined || this.brand == "" || this.price == undefined || this.price == "") {
@@ -83,6 +95,10 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  /**
+   * Envia los datos al backend
+   */
+
   sendData(){
     (async () => {
       this.sendProduct();
@@ -90,6 +106,10 @@ export class ProductsComponent implements OnInit {
       this.sendSupplierProduct();
     })();
   }
+
+  /**
+   * Envia los multivalores al backend de los proveedores del producto
+   */
 
   sendSupplierProduct() {
 
@@ -117,6 +137,10 @@ export class ProductsComponent implements OnInit {
 
 
   }
+
+  /**
+   * Envia los datos al backend
+   */
 
   sendProduct() {
 

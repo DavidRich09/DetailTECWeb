@@ -25,6 +25,10 @@ export class WorkersComponent implements OnInit {
 
   }
 
+  /**
+   * Validas que los campos esten correctos
+   */
+
   send() {
 
     if(this.name == undefined || this.name == "" || this.lastName == undefined || this.lastName == "" || this.id == undefined || this.id == "" || this.dateBorn == undefined || this.dateBorn == "" || this.dateStart == undefined || this.dateStart == "" || this.age == undefined || this.age == "" || this.password == undefined || this.password == "" || this.rol == undefined || this.rol == "" || this.payment == undefined || this.payment == "") {
@@ -42,6 +46,10 @@ export class WorkersComponent implements OnInit {
     }
 
   }
+
+  /**
+   * Envia los datos del trabajador al servidor
+   */
 
   saveWorker() {
     this.ApiAdmin.PostWorker(
@@ -68,6 +76,9 @@ export class WorkersComponent implements OnInit {
     });
   }
 
+  /**
+   * Monsra un mensaje de error
+   */
 
   showWarning(message: string) {
     Swal.fire({

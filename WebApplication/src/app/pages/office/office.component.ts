@@ -22,6 +22,10 @@ export class OfficeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Verifica que los datos sean validos
+   */
+
   send() {
     if(this.name == undefined || this.name == "" || this.provincia == undefined || this.provincia == "" || this.canton == undefined || this.canton == "" || this.distrito == undefined || this.distrito == "" || this.celNumber == undefined || this.celNumber == "" || this.dateOpen == undefined || this.dateOpen == "" || this.manager == undefined || this.manager == "" || this.dateStart == undefined || this.dateStart == "") {
       this.showWarning("Todos los campos son obligatorios");
@@ -36,6 +40,10 @@ export class OfficeComponent implements OnInit {
     }
 
   }
+
+  /**
+   * Envia los datos al servicio
+   */
 
   saveOffice() {
 

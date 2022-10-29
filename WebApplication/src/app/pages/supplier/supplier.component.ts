@@ -20,6 +20,10 @@ export class SupplierComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Valida que todos los campos sean alidos
+   */
+
   send() {
     if(this.name == undefined || this.name == "" || this.idCompany == undefined || this.idCompany == "" || this.address == undefined || this.address == "" || this.mail == undefined || this.mail == "" || this.number == undefined || this.number == "") {
       this.showWarning("Todos los campos son obligatorios");
@@ -35,6 +39,9 @@ export class SupplierComponent implements OnInit {
 
   }
 
+  /**
+   * Envia los datos al servidor para guardarlos
+   */
 
   save() {
 

@@ -16,6 +16,10 @@ export class ReportComponent implements OnInit {
 
   }
 
+  /**
+   * Envia la instruccion para generar los reportes
+   */
+
   Asistente() {
     this.ApiAdmin.Asistente().subscribe((data) => {
       console.log(data);
